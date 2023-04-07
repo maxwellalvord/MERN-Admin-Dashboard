@@ -11,8 +11,7 @@ import FlexBetween from 'components/FlexBetween';
 import { useDispatch } from 'react-redux';
 import { setMode } from 'state';
 import profileImage from "assets/max.jpg";
-import { AppBar, IconButton, InputBase, Toolbar } from '@mui/material';
-import { useTheme } from '@emotion/react';
+import { AppBar, IconButton, InputBase, Toolbar, useTheme } from '@mui/material';
 
 
 const Navbar = () => {
