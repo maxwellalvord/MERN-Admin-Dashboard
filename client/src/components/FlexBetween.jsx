@@ -1,7 +1,7 @@
 const { Box } = require("@mui/material");
 const { styled } = require("@mui/system");
 
-const FlexBetween = stlyed(Box)({
+const FlexBetween = styled(Box)({
   display: "flex",
   justifyContent: "Space-between",
   alignItems: "center"
