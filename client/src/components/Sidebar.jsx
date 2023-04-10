@@ -24,7 +24,9 @@ import {
   PointOfSaleOutlined,
   AdminPanelSettingsOutlined,
   TrendingUpOutlined,
-  PieChartOutlined
+  PieChartOutlined,
+  TodayOutlined,
+  CalendarMonthOutlined
 } from "@mui/icons-material";
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -117,7 +119,7 @@ useEffect(() => {
           sx={{
             widows: drawerWidth,
             "& .MuiDrawer-paper": {
-              color: theme.palette.secondary[200],
+              color: theme.palette.green[200],
               backgroundColor: theme.palette.background.alt,
               boxSizing: "border-box",
               borderWidth: isNonMobile ? 0 : "2px",
@@ -127,7 +129,7 @@ useEffect(() => {
         >
           <Box width="100%">
             <Box m=" 1.5rem 2rem 2rem 3rem">
-              <FlexBetween color={theme.palette.secondary.main}>
+              <FlexBetween color={theme.palette.green.main}>
                 <Box display="flex" alignItems="center" gap="0.5rem">
                   <Typography variant="h4" fontWeight="bold">
                     ECOM-EYES
@@ -141,7 +143,53 @@ useEffect(() => {
               </FlexBetween>
             </Box>
             <List>
-              {}
+              {navItems.map(({ text, icon }) => {
+                if (!icon) {
+                  return (
+                    <Typography key={text} sx={{ m: "2.25rem 0 1rem 3rem" }}>
+                      {text}
+                    </Typography>
+                  );
+                }
+                const lcText = text.toLowerCase();
+
+                return (
+                  <ListItem key={text} disablePadding>
+                    <ListItemButton
+                      onClick={() => {
+                        navigate(`/${lcText}`);
+                        setActive(lcText);
+                      }}
+                      sx={{
+                        backgroundColor:
+                          active === lcText
+                            ? theme.palette.green[300]
+                            : "transparent",
+                        color:
+                          active === lcText
+                            ? theme.palette.blue[600]
+                            : theme.palette.green[100],
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          ml: "2rem",
+                          color:
+                            active === lcText
+                              ? theme.palette.blue[600]
+                              : theme.palette.green[200],
+                        }}
+                      >
+                        {icon}
+                      </ListItemIcon>
+                      <ListItemText primary={text} />
+                      {active === lcText && (
+                        <ChevronRightOutlined sx={{ ml: "auto" }} />
+                      )}
+                    </ListItemButton>
+                  </ListItem>
+                );
+              })}
             </List>
           </Box>
         </Drawer>

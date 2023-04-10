@@ -1,8 +1,11 @@
+import FlexBetween from 'components/FlexBetween'
 import React from 'react'
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <FlexBetween>
+      <div>Dashboard</div>
+    </FlexBetween>
   )
 }
 
